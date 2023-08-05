@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar color="secondary">
     <ion-title>
       FreeCodeCamp LIVE
     </ion-title>
@@ -7,15 +7,93 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
-  </ion-header>
-  <P>Hello world!</P>
+  </ion-header> -->
 
-  <div id="container">
+  <!-- <div id="container">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </div> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-start">
+          <h3>text-start</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-end">
+          <h3>text-end</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-center">
+          <h3>text-center</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-justify">
+          <h3>text-justify</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-wrap">
+          <h3>text-wrap</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-nowrap">
+          <h3>text-nowrap</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item-divider>
+    <ion-label>Margin</ion-label>
+  </ion-item-divider>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-margin">
+        <div>margin</div>
+      </ion-col>
+      <ion-col class="ion-margin-top">
+        <div>margin-top</div>
+      </ion-col>
+      <ion-col class="ion-margin-start">
+        <div>margin-start</div>
+      </ion-col>
+      <ion-col class="ion-margin-end">
+        <div>margin-end</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-margin-bottom">
+        <div>margin-bottom</div>
+      </ion-col>
+      <ion-col class="ion-margin-vertical">
+        <div>margin-vertical</div>
+      </ion-col>
+      <ion-col class="ion-margin-horizontal">
+        <div>margin-horizontal</div>
+      </ion-col>
+      <ion-col class="ion-no-margin">
+        <div>no-margin</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
