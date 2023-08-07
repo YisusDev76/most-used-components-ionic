@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
@@ -17,6 +17,41 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div> -->
+
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" sizeMd="8" sizeLg="6" sizeXl="4">
+        <div class="ion-text-center ion-padding">
+          <img src="../../assets/icon_1.png" alt="FCC" width="50%">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" sizeMd="8" sizeLg="6" sizeXl="4">
+        <ion-card>
+          <ion-card-content>
+            <form (ngSubmit)="doLogin()">
+              <ion-input fill="outline" labelPlacement="floating" label="Email" type="email" placeholder="email"></ion-input>
+              <ion-input class="ion-margin-top" fill="outline" labelPlacement="floating" label="password" type="password" placeholder="password"></ion-input>
+              <ion-button expand="block" class="ion-margin-top" type="submit">
+                Login
+                <ion-icon name="airplane-outline" slot="end"></ion-icon>
+              </ion-button>
+              <ion-button expand="block" class="ion-margin-top" color="secondary" (click)="sendPageRegister()">
+                Create Account
+                <ion-icon name="alert-circle-outline"></ion-icon>
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-item-divider>
+    <ion-label>text Align</ion-label>
+  </ion-item-divider>
 
   <ion-grid>
     <ion-row>
