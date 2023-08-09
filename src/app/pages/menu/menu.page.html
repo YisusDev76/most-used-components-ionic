@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>menu</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-split-pane>
+  <ion-menu contentId="content" menuId="content" side="start" type="overlay">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle autoHide="false" *ngFor="let p of pages">
+          <ion-item routerLink="p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
+            <ion-label>
+              {{ p.title }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item tappable routerLink="/login" routerDirection="root">
+          <ion-icon slot="start" name="log-out"></ion-icon>
+          Logout
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+    
+  </ion-menu>
+
+  <ion-router-outlet id="content" main></ion-router-outlet>
+</ion-split-pane>
