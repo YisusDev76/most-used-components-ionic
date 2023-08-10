@@ -1,6 +1,5 @@
-<ion-split-pane>
-  <ion-menu contentId="content" menuId="content" side="start" type="overlay">
-
+<ion-split-pane contentId="content">
+  <ion-menu contentId="content" side="start" type="overlay">
 
     <ion-header>
       <ion-toolbar color="primary">
@@ -12,7 +11,7 @@
     <ion-content>
       <ion-list>
         <ion-menu-toggle autoHide="false" *ngFor="let p of pages">
-          <ion-item routerLink="p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
+          <ion-item [routerLink] = "p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
             <ion-label>
               {{ p.title }}
             </ion-label>
