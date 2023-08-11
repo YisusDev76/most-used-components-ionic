@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { FirstWithTabsPage } from './pages/first-with-tabs/first-with-tabs.page';
-import { SecondPage } from './pages/second/second.page';
 
 export const routes: Routes = [
   {
@@ -14,23 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'menu',
-    loadComponent: () => import('./pages/menu/menu.page').then( m => m.MenuPage),
-    children: [
-      {
-        path:'', 
-        redirectTo:'first',
-        pathMatch: 'full' // Añade esto aquí
-      },
-      {
-        path: 'first',
-        component: FirstWithTabsPage
-      },
-      {
-        path: 'second', 
-        component: SecondPage
-      },
-    ],
-
+    loadChildren: () => import('./pages/menu/menu.routes').then( m => m.routes),
   },
 
 ];
