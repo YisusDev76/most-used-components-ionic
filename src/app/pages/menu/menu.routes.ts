@@ -12,6 +12,10 @@ export const routes: Routes = [
         // loadComponent: () => import('../first-with-tabs/first-with-tabs.page').then(m => m.FirstWithTabsPage)
       },
       {
+        path: 'home',
+        loadComponent:() => import('../home/home.page').then(m=>m.HomePage)
+      },
+      {
         path: 'second',
         loadComponent: () => import('../second/second.page').then(m => m.SecondPage)
       },

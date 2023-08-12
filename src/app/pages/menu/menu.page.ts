@@ -24,6 +24,10 @@ export class MenuPage implements OnInit {
       title:'Second page blank',
       url:'/menu/second'
     },
+    {
+      title:'Home',
+      url:'/menu/home'
+    },
   ];
 
   selectedPath = '';
