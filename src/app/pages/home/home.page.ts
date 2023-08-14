@@ -15,13 +15,4 @@ export class HomePage {
     console.log("Home sweet home");
     
   }
-
-  doLogin(){
-    console.log("Hacer login");
-  }
-
-  sendPageRegister() {
-    console.log("Enviar a pagina de crear cuenta");
-    
-  }
 }

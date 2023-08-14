@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +13,22 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    ) { }
 
   ngOnInit() {
+  }
+
+
+  doLogin(){
+    console.log("Hacer login");
+    this.router.navigateByUrl('/menu/first', { replaceUrl: true });
+  }
+
+
+  sendPageRegister() {
+    console.log("Enviar a pagina de crear cuenta");
+    
   }
 
 }
