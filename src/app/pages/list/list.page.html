@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearList()">
+        <ion-icon name="trash-bin-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="success">
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let user of users">
+    <ion-card-content class="ion-no-padding">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-img [src]="user.picture.large"/>
+        </ion-avatar>
+        <ion-label>
+          {{user.name.first}} {{user.name.last}}
+          <p>{{user.email}}</p>
+        </ion-label>
+        <ion-chip slot="end" color="primary">
+          {{user.nat}}
+        </ion-chip>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

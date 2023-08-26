@@ -28,6 +28,10 @@ export class MenuPage implements OnInit {
       title:'Home',
       url:'/menu/home'
     },
+    {
+      title:'List',
+      url:'/menu/list'
+    },
   ];
 
   selectedPath = '';
