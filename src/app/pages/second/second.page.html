@@ -4,12 +4,61 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Second</ion-title>
+    <ion-title>Skeleton Animations</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-button expand="block" routerLink="/menu/second/details" routerDirection="forward">
-    Details foward
-  </ion-button>
+<ion-content class="ion-padding" >
+  <div class="wrapper">
+  <ng-container *ngIf="loading; else content">
+    <div @fadeInOut class="loading-state">
+    <ion-item lines="none">
+      <ion-icon name="pricetag" slot="start" color="medium"></ion-icon>
+      <ion-label>
+        <ion-skeleton-text 
+        animated
+        style="width: 50vw; padding: 2px;"
+        ></ion-skeleton-text>
+        <ion-skeleton-text
+        style="width: 70vw"
+        class="ion-margin-top"
+        ></ion-skeleton-text>
+        <ion-skeleton-text style="width: 70vw"></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let i of [1,2,3]" lines="none" detail="true">
+      <img 
+      style="width: 50px; height: 50px;"
+      slot="start"
+      src="https://ionicacademy.com/wp-content/uploads/2021/11/academy-150x150.jpg">
+      <ion-label>Awesome Label</ion-label>
+    </ion-item>
+    </div>
+  </ng-container>
+  
+  
+  
+  <ng-template #content>
+    <div @fadeInOut class="content">
+      <ion-item lines="none" detail="true">
+        <ion-icon name="pricetag" slot="start" color="medium"></ion-icon>
+        <ion-label>
+          Awesome Label
+          <p>A cool Ionic Academy shirt</p>
+        </ion-label>
+        p
+      </ion-item>
+      <ion-button expand="block" routerLink="/menu/second/details" routerDirection="forward">
+        Details foward
+      </ion-button>
+    </div>
+  </ng-template>
+</div>
+
+  <ion-card>
+    <ion-card-content>
+      I am below the loading stuff!
+    </ion-card-content>
+  </ion-card>
 </ion-content>
