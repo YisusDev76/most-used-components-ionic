@@ -15,24 +15,45 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let user of users">
-    <ion-card-content class="ion-no-padding">
-      <ion-item lines="none">
-        <ion-avatar slot="start">
-          <ion-img [src]="user.picture.large"/>
-        </ion-avatar>
-        <ion-label>
-          {{user.name.first}} {{user.name.last}}
-          <p>{{user.email}}</p>
-        </ion-label>
-        <ion-chip slot="end" color="primary">
-          {{user.nat}}
-        </ion-chip>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+  <ng-container *ngIf="loading; else content">
+    <ion-card *ngFor="let _ of skeletonArray">
+      <ion-card-content class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <ion-skeleton-text></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <ion-skeleton-text animated style="width: 150px"></ion-skeleton-text>
+            <p>
+              <ion-skeleton-text></ion-skeleton-text>
+            </p>
+          </ion-label>
+          <ion-chip slot="end" color="primary"></ion-chip>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+  </ng-container>
+  <ng-template #content>
+    <ion-card *ngFor="let user of users">
+      <ion-card-content class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <ion-img [src]="user.picture.large"/>
+          </ion-avatar>
+          <ion-label>
+            {{user.name.first}} {{user.name.last}}
+            <p>{{user.email}}</p>
+          </ion-label>
+          <ion-chip slot="end" color="primary">
+            {{user.nat}}
+          </ion-chip>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
 </ion-content>

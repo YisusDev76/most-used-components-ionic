@@ -14,8 +14,12 @@ import { ToastController } from '@ionic/angular';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class ListPage implements OnInit {
+  // Un array con 10 elementos 'undefined'.
+  skeletonArray = new Array(10);
   users: any[] = [];
-  showAlert:any;
+  selectedUser :any = null;
+  setSelectedUser: any = null;
+  loading = true;
 
   constructor(
     private userService: UsersService,
@@ -26,6 +30,7 @@ export class ListPage implements OnInit {
   ngOnInit() {
     this.userService.getUsers().subscribe((data) => {
       this.users = data.results;
+      this.loading = false;
       // console.log(this.users);
     });
   }
@@ -59,6 +64,7 @@ export class ListPage implements OnInit {
   doRefresh(event: any) {
     this.userService.getUsers().subscribe((data) => {
       this.setUsers(data.results);
+      this.loading = false;
     });
     event.detail.complete();
   }
