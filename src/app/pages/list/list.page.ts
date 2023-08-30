@@ -18,9 +18,9 @@ export class ListPage implements OnInit {
   skeletonArray = new Array(10);
   users: any[] = [];
   selectedUser :any = null;
-  setSelectedUser: any = null;
   loading = true;
-
+  presentingElement: Element | null = null;
+  activeSegment:any = 'details';
   constructor(
     private userService: UsersService,
     private alertController: AlertController,
@@ -28,6 +28,7 @@ export class ListPage implements OnInit {
     ) {}
 
   ngOnInit() {
+    this.presentingElement = document.querySelector('.ion-page');
     this.userService.getUsers().subscribe((data) => {
       this.users = data.results;
       this.loading = false;
@@ -38,6 +39,22 @@ export class ListPage implements OnInit {
   setUsers(users:[]){
     this.users = users;
   }
+
+  setSelectedUser(user :any){
+    this.selectedUser = user;
+    console.log("Disparamos el evento del card");
+    
+  }
+
+  setOpen(isOpen: boolean) {
+    this.selectedUser=null;
+  }
+
+  setActiveSegment(event: any) {
+    this.activeSegment = event.detail.value;
+  }
+  
+
 
   async clearList() {
     const alert = await this.alertController.create({
@@ -76,6 +93,11 @@ export class ListPage implements OnInit {
       color: "danger"
     });
     toast.present();
+  }
+
+  onWillDismiss(event:Event){
+    this.setSelectedUser(null);
+    console.log("SE debe cerrar el modal");
   }
 
   

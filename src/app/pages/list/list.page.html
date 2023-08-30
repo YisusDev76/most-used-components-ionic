@@ -1,3 +1,4 @@
+<div class="ion-page">
 <ion-header [translucent]="true">
   <ion-toolbar color="success">
     <ion-buttons slot="start">
@@ -39,7 +40,7 @@
 
   </ng-container>
   <ng-template #content>
-    <ion-card *ngFor="let user of users">
+    <ion-card *ngFor="let user of users" (click)="setSelectedUser(user)">
       <ion-card-content class="ion-no-padding">
         <ion-item lines="none">
           <ion-avatar slot="start">
@@ -56,4 +57,75 @@
       </ion-card-content>
     </ion-card>
   </ng-template>
+
+  <ion-modal [breakpoints]="[0, 0.5, 0.8]" [initialBreakpoint]="0.5"
+  [isOpen]="selectedUser !== null" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="light">
+          <ion-buttons slot="start">
+            <ion-button (click)="setSelectedUser(null)">
+              Close
+            </ion-button>
+          </ion-buttons>
+          <ion-title>{{selectedUser?.name.first}} {{selectedUser?.name.last}}</ion-title>
+        </ion-toolbar>
+        <ion-toolbar color="light">
+          <ion-segment [value]="activeSegment" (ionChange)="setActiveSegment($event)">
+            <ion-segment-button value="details">
+              Details
+            </ion-segment-button>
+            <ion-segment-button value="calendar">
+              Calendar
+            </ion-segment-button>
+          </ion-segment>
+        </ion-toolbar>
+      </ion-header>
+  
+      <ion-content class="ion-padding">
+        <ion-card *ngIf="activeSegment === 'details'">
+          <ion-avatar slot="start">
+            <img [src]="selectedUser?.picture.large" />
+          </ion-avatar>
+          <ion-card-content class="ion-no-padding">
+            <ion-item lines="none">
+              <ion-label class="ion-text-wrap">
+                {{selectedUser.name.first}} {{selectedUser.name.last}}
+                <p>{{selectedUser?.email}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+        <ion-datetime *ngIf="activeSegment === 'calendar'"></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #cardModal trigger="card-modal" [presentingElement]="presentingElement">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="success">
+          <ion-buttons slot="start">
+            <ion-button (click)="cardModal.dismiss()">
+              Close
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Card Modal</ion-title>
+        </ion-toolbar>
+      </ion-header>
+  
+      <ion-content>
+        <p>My card modal</p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="card-modal">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
 </ion-content>
+</div>
