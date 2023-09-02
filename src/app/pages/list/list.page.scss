@@ -1,0 +1,9 @@
+ion-item:hover {
+    --background: #5cffa8;
+    // --color: #fff;
+    --color:var(--ion-color-dark);
+}
+
+ion-item {
+    --padding-start: 20px;
+}
