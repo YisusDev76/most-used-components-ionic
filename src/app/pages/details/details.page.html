@@ -3,9 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref=""></ion-back-button>
     </ion-buttons>
-    <ion-title>details</ion-title>
+    <ion-title>details- Image Example</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-button (click)="takePicture()" expand="full">
+    Take Picture
+  </ion-button>
+  <img [src]="image" alt="">
 </ion-content>
